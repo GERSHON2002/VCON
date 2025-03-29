@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projection</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background-color: #f4f4f4;
+            font-family: 'Noto Sans Tamil', sans-serif;
+            text-align: center;
+            padding: 10px;
+        }
+
+        pre {
+            white-space: pre-wrap; /* Keeps original formatting */
+            font-size: 20px;
+            color: #333;
+            max-width: 90%;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <pre id="lyrics">Loading...</pre>
+
+    <script>
+        fetch('lyrics.txt')
+            .then(response => response.text())
+            .then(data => {
+                // Ensure the correct character encoding is displayed
+                document.getElementById('lyrics').textContent = data;
+            })
+            .catch(error => console.error('Error loading lyrics:', error));
+    </script>
+</body>
+</html>
